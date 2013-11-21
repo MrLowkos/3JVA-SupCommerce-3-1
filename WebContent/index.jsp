@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,7 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">					
 </head>
 					
-<body style="padding-top: 70px;">
+<body>
 				
 	<div id="header" class="navbar navbar-fixed-top navbar-inverse">
 		<div class="container">
