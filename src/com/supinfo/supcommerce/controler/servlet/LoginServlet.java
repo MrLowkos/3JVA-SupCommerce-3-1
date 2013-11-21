@@ -54,6 +54,7 @@ public class LoginServlet extends HttpServlet {
 			// Redirect to products list
 			response.sendRedirect(request.getServletContext().getContextPath() + LIST_PRODUCT_SERVLET);
 		}
+		// No POST parameters
 		else
 			// Forward to login page
 			request.getRequestDispatcher(LOGIN_VIEW).forward(request, response);	

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="com.supinfo.sun.supcommerce.bo.SupProduct"%>
-<%@ page import="com.supinfo.sun.supcommerce.doa.SupProductDao" %>
+<%@ page import="com.supinfo.sun.supcommerce.doa.SupProductDao"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.text.DecimalFormat"%>
 
@@ -50,7 +50,7 @@ final List<SupProduct> products = SupProductDao.getAllProducts();
 						</header>
 						<section class="panel-body">
 					       <p>Product name: <%= p.getName() %></p>
-					       <p>Product description: <%= p.getContent() %></p>
+					       <p class="description">Product description: <%= p.getContent() %></p>
 					       <p>Product price: <%=  priceFormat.format(p.getPrice()) %></p>
 					    </section>
 				    </article>

@@ -27,15 +27,14 @@ if(session.getAttribute("username") != null && session.getAttribute("username") 
 				else { %>
 					<li><a href="<%= rootPath %>"><span class="glyphicon glyphicon-home"></span>&nbsp; Home</a></li>
 				<% } %>
-				<li><a href="<%= rootPath %>/listProduct"><span class="glyphicon glyphicon-list"></span>&nbsp; Products List Servlet</a></li>
-				<li><a href="<%= rootPath %>/listProduct.jsp"><span class="glyphicon glyphicon-list"></span>&nbsp; Products List Jsp</a></li>
+				<li><a href="<%= rootPath %>/listProduct.jsp"><span class="glyphicon glyphicon-list"></span>&nbsp; Products List</a></li>
 				<% if(logged) { %>
 					<li><a href="<%= rootPath %>/auth/basicInsert"><span class="glyphicon glyphicon-random"></span>&nbsp; Random Product</a></li>
 					<li><a href="<%= rootPath %>/auth/addProduct"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Product</a></li>
 				<% } %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<% if(logged)  { %>
+				<% if(logged) { %>
 					<li class="rigth"><a href="<%= rootPath %>/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a></li>
 				<% }
 				else  {%>
