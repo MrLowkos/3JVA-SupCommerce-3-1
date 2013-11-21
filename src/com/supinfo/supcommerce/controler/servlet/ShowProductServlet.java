@@ -28,6 +28,7 @@ import com.supinfo.sun.supcommerce.exception.UnknownProductException;
 @WebServlet(description = "Servlet To Show A Registered Product By ID", urlPatterns = "/showProduct")
 public class ShowProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	private static final String PARAM_ID_GET = "id";
        
     /**
@@ -68,7 +69,7 @@ public class ShowProductServlet extends HttpServlet {
  					+ "<meta charset=\"UTF-8\">"
  					+ "<meta content=\"IE=edge\" http-equiv=\"X-UA-Compatible\">"
  					+ "<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\">"
- 					+ "<title>ListProduct - Servlet</title>"
+ 					+ "<title>ShowProduct - Servlet</title>"
  					// CSS bootstrap 3.0
  					+ "<link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css\">"
  					+ "<link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css\">"					
@@ -89,7 +90,8 @@ public class ShowProductServlet extends HttpServlet {
  							+ "<nav class=\"navbar-collapse collapse\" style=\"height: 0.8px;\">"
  								+ "<ul class=\"nav navbar-nav\">"
  									+ "<li><a href=\"/SupCommerce-3-1\"><span class=\"glyphicon glyphicon-home\"></span>&nbsp; Home</a></li>"
- 									+ "<li><a href=\"/SupCommerce-3-1/listProduct\"><span class=\"glyphicon glyphicon-list\"></span>&nbsp; Products List</a></li>"
+ 									+ "<li><a href=\"/SupCommerce-3-1/listProduct\"><span class=\"glyphicon glyphicon-list\"></span>&nbsp; Products List Servlet</a></li>"
+ 									+ "<li><a href=\"/SupCommerce-3-1/listProduct.jsp\"><span class=\"glyphicon glyphicon-list\"></span>&nbsp; Products List Jsp</a></li>"
  									+ "<li><a href=\"/SupCommerce-3-1/auth/basicInsert\"><span class=\"glyphicon glyphicon-random\"></span>&nbsp; Random Product</a></li>"
  								+ "</ul>"
  							+ "</nav>"

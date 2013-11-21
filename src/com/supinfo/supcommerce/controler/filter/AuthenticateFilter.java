@@ -25,8 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthenticateFilter implements Filter {
 	
 	private FilterConfig filterConfig;
+	
 	private static final String PARAM_USERNAME_SESSION = "username";
-	private static final String LOGIN_VIEW 			   = "/login.html";
+	private static final String LOGIN_VIEW 			   = "/login.jsp";
 	private static final String ROOT_VIEW 			   = "/";
 
     /**
@@ -53,7 +54,7 @@ public class AuthenticateFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-		// Http protocol only
+		// Http(s) protocol only
 		HttpServletRequest httpRequest = null;
 		HttpServletResponse httpResponse = null;
 		
@@ -68,15 +69,15 @@ public class AuthenticateFilter implements Filter {
 			((HttpServletResponse) response).sendRedirect(this.getFilterConfig().getServletContext().getContextPath() + ROOT_VIEW);
 		
 		// Retrieve username session parameter
-		final Object usernameParam = httpRequest.getSession().getAttribute(PARAM_USERNAME_SESSION);
+		final Object sessionUsername = httpRequest.getSession().getAttribute(PARAM_USERNAME_SESSION);
 		
 		// Username exist in session, user is proprely logged :s password ... MD5 ... session token ???
-		if(usernameParam != null && usernameParam instanceof String)
+		if(sessionUsername != null && sessionUsername instanceof String)
 			// Redirect to next requested chain element
 			chain.doFilter(request, response);
 		else
 			// Redirect to login page
-			httpResponse.sendRedirect(httpRequest.getContextPath() + LOGIN_VIEW);
+			httpResponse.sendRedirect(httpRequest.getServletContext().getContextPath() + LOGIN_VIEW);
 		
 	}
 

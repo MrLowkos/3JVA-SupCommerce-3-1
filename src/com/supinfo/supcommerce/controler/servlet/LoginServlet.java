@@ -14,14 +14,16 @@ import javax.servlet.http.HttpServletResponse;
  * Create a new session and a "username" attribute in this one.
  * 
  * @author Elka
- * @version 2.2
+ * @version 3.1
  * @since SupCommerce 2.2
  */
 @WebServlet(description = "Servlet To Control Login", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	private static final String PARAM_USERNAME_POST = "username";
     private static final String LIST_PRODUCT_SERVLET = "/listProduct";
+    private static final String LOGIN_VIEW = "/login.jsp";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,13 +45,19 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Retrieve form parameter
-		final String usernameParam = request.getParameter(PARAM_USERNAME_POST);
+		final Object usernameParam = request.getParameter(PARAM_USERNAME_POST);
 		
-		// Insert it in session attribute
-		request.getSession().setAttribute(PARAM_USERNAME_POST, usernameParam);
+		// "username" (String) exist in request POST parameters
+		if(usernameParam != null && usernameParam instanceof String) {
+			// Insert it in session attribute		
+			request.getSession().setAttribute(PARAM_USERNAME_POST, usernameParam);
+			// Redirect to products list
+			response.sendRedirect(request.getServletContext().getContextPath() + LIST_PRODUCT_SERVLET);
+		}
+		else
+			// Forward to login page
+			request.getRequestDispatcher(LOGIN_VIEW).forward(request, response);	
 		
-		//Redirect to products list
-		response.sendRedirect(request.getServletContext().getContextPath() + LIST_PRODUCT_SERVLET);
 	}
 
 }
