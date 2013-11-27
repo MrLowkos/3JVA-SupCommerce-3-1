@@ -11,22 +11,29 @@
 	<!-- CSS bootstrap 3.0 --> 
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="<%= application.getContextPath() %>/css/sticky-footer.css">
 	<link rel="stylesheet" href="<%= application.getContextPath() %>/css/style.css">					
 </head>
 					
 <body>
-				
-<%@include file="/WEB-INF/template/header.jsp" %>
 
-<section id="main-container" class="container">
-	<div class="row">
-		<div class="jumbotron">
-			<h1>Welcome to SupCommerce<br/>
-			<small>A product's manager site.</small></h1>
-		</div>
-	</div>
-</section>
-					
+<div id="wrap">	
+			
+	<%@include file="/WEB-INF/template/header.jsp" %>
+	
+	<section id="main-container" class="container">
+	
+			<div class="jumbotron">
+				<h1>Welcome <%= (session.getAttribute("username") != null) ? (session.getAttribute("username") + ",<br/>enjoy ") : "to " %>SupCommerce<br/>
+				<small>A product manager site.</small></h1>
+			</div>
+			
+	</section>
+	
+	<div id="push"></div>
+	
+</div>		
+			
 <%@include file="/WEB-INF/template/footer.jsp" %>
 
 </body>			

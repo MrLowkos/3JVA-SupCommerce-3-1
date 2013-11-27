@@ -22,15 +22,15 @@ if(session.getAttribute("username") != null && session.getAttribute("username") 
 		<nav class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<% if(logged) { %>
-					<li class="active"><a href="<%= rootPath %>/listProduct.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp; <%= session.getAttribute("username") %></a></li>
+					<li class="active"><a href="<%= rootPath %>/listProduct.jsp"><span class="glyphicon glyphicon-user"></span>&nbsp; <%= session.getAttribute("username") %></a></li>
 				<% }
 				else { %>
 					<li><a href="<%= rootPath %>"><span class="glyphicon glyphicon-home"></span>&nbsp; Home</a></li>
 				<% } %>
-				<li><a href="<%= rootPath %>/listProduct.jsp"><span class="glyphicon glyphicon-list"></span>&nbsp; Products List</a></li>
+				<li><a href="<%= rootPath %>/listProduct.jsp"><span class="glyphicon glyphicon-list"></span>&nbsp; Products</a></li>
 				<% if(logged) { %>
-					<li><a href="<%= rootPath %>/auth/basicInsert"><span class="glyphicon glyphicon-random"></span>&nbsp; Random Product</a></li>
-					<li><a href="<%= rootPath %>/auth/addProduct"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Product</a></li>
+					<li><a href="<%= rootPath %>/auth/basicInsert"><span class="glyphicon glyphicon-random"></span>&nbsp; Rand Product</a></li>
+					<li><a href="<%= rootPath %>/auth/addProduct"><span class="glyphicon glyphicon-plus"></span>&nbsp; Product</a></li>
 				<% } %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

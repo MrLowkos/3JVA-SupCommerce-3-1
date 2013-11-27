@@ -8,15 +8,15 @@
 
 <%
 String error = "";
-final Object idParam = request.getParameter("id");
+final Object id = request.getParameter("id");
 final DecimalFormat priceFormat = new DecimalFormat("0.00 €");
-SupProduct requestedProduct = new SupProduct();
+SupProduct product = new SupProduct();
 
 // Retrieve product with "id" parameter requested
-if(idParam != null && idParam instanceof String) {
+if(id != null && id instanceof String) {
 	try {
-		final Long idLong = Long.parseLong((String) idParam);
-		requestedProduct = SupProductDao.findProductById(idLong);
+		final Long idLong = Long.parseLong((String) id);
+		product = SupProductDao.findProductById(idLong);
 	} catch(UnknownProductException e) {
 		error = e.getMessage();
 	} catch(NumberFormatException e) {
@@ -35,40 +35,40 @@ if(idParam != null && idParam instanceof String) {
  	<meta content="IE=edge" http-equiv="X-UA-Compatible">
  	<meta content="width=device-width, initial-scale=1.0" name="viewport">
  	<title>ShowProduct - JSP</title>
- 	<%-- CSS bootstrap 3.0 --%> 
+ 	<%-- CSS --%> 
  	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
  	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
- 	<link rel="stylesheet" href="<%= application.getContextPath() %>/css/style.css">					
+ 	<link rel="stylesheet" href="<%= application.getContextPath() %>/css/sticky-footer.css">
+ 	<link rel="stylesheet" href="<%= application.getContextPath() %>/css/style.css">				
 </head>
  					
 <body>
 
-<%@include file="/WEB-INF/template/header.jsp" %>
+<div id="wrap">	
 
-<section id="main-container" class="container">
-	<div class="row">
-		<h1 class="col-sx-12 col-sm-12 col-md-12 col-lg-12">Product Details</h1>
-		<% if(!error.isEmpty()) { %>
-			<div class="alert alert-danger col-sx-12 col-sm-12 col-md-12 col-lg-12">
-				<h3><span class="glyphicon glyphicon-warning-sign"></span>&nbsp; <%= error %></h3>
-			</div>			
-		<% } else { %>
-			<div class="col-sx-12 col-sm-6 col-md-4 col-lg-3">
-				<article class="panel panel-primary">												
-					<header class="panel-heading">
-						<h3><span class="glyphicon glyphicon-tag"></span>&nbsp; Product ID: <%= requestedProduct.getId() %></h3>
-					</header>
-					<section class="panel-body">
-				       <p>Product name: <%= requestedProduct.getName() %></p>
-				       <p class="description">Product description: <%= requestedProduct.getContent() %></p>
-				       <p>Product price: <%=  priceFormat.format(requestedProduct.getPrice()) %></p>
-				    </section>
-			    </article>
-		    </div>
-		<% } %>		
-	</div>
-</section>
-		 
+	<%@include file="/WEB-INF/template/header.jsp" %>
+	
+	<section id="main-container" class="container">
+			<div class="page-header">
+				<h1>Product Details</h1>
+			</div>
+			<% if(!error.isEmpty()) { %>
+				<p class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>&nbsp; <%= error %></p>
+			<% } else { %>			
+				<ul class="list-group panel panel-primary">
+					<li class="list-group-item panel-heading"><span class="glyphicon glyphicon-tag"></span>&nbsp; <%= product.getId() %></li>
+					<li class="list-group-item">Name: <span class="text-muted"><%= product.getName() %></span></li>
+					<li class="list-group-item">Description: <span class="text-muted"><%= product.getContent() %></span></li>
+					<li class="list-group-item">Price: <span class="text-muted"><%= priceFormat.format(product.getPrice()) %></span></li>
+				</ul>			    
+			<% } %>		
+		
+	</section>
+	
+	<div id="push"></div>
+	
+</div>
+	 
 <%@include file="/WEB-INF/template/footer.jsp" %>
 
 </body>
